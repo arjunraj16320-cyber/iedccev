@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule – IEDC Startup Bootcamp 2026</title>
+  <meta name="description" content="Full schedule and agenda for IEDC Startup Bootcamp 2026 on March 24 at CEV." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary:#6c63ff; --secondary:#ff6584; --accent:#43e97b;
+      --dark:#0a0a1a; --dark2:#11112a; --glass:rgba(255,255,255,.07);
+      --border:rgba(255,255,255,.12); --text:#e8e8ff; --muted:#9090b0;
+      --gradient:linear-gradient(135deg,#6c63ff,#ff6584); --glow:0 0 30px rgba(108,99,255,.4);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden;}
+    #scroll-bar{position:fixed;top:0;left:0;height:3px;background:var(--gradient);z-index:9999;transition:width .1s;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:18px 60px;background:rgba(10,10,26,.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+    .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+    .nav-brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid var(--primary);box-shadow:0 0 12px rgba(108,99,255,.5);}
+    .nav-brand span{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .nav-links{display:flex;gap:8px;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:8px 16px;border-radius:8px;transition:all .3s;}
+    .nav-links a:hover,.nav-links a.active{color:white;background:var(--glass);}
+    .nav-cta{background:var(--gradient) !important;color:white !important;padding:10px 22px !important;border-radius:10px !important;box-shadow:var(--glow);}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;}
+    @media(max-width:768px){nav{padding:14px 24px;}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,26,.97);flex-direction:column;padding:20px 24px;gap:4px;border-bottom:1px solid var(--border);}.nav-links.open{display:flex;}.hamburger{display:flex;}}
+
+    .page-hero{padding:160px 24px 80px;text-align:center;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(108,99,255,.2) 0%,transparent 70%);}
+    .page-hero .tag{display:inline-block;background:rgba(108,99,255,.15);border:1px solid rgba(108,99,255,.4);padding:7px 18px;border-radius:100px;font-size:12px;color:#a78bfa;font-weight:600;letter-spacing:.5px;margin-bottom:20px;}
+    .page-hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,5vw,62px);font-weight:800;letter-spacing:-1.5px;margin-bottom:16px;}
+    .page-hero h1 span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .page-hero p{color:var(--muted);font-size:18px;max-width:520px;margin:0 auto;line-height:1.7;}
+
+    section{padding:70px 24px;position:relative;z-index:1;}
+    .section-label{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:10px;text-align:center;}
+    .section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;margin-bottom:14px;text-align:center;}
+    .section-desc{color:var(--muted);font-size:16px;max-width:580px;margin:0 auto 50px;line-height:1.7;text-align:center;}
+
+    /* INFO STRIP */
+    .info-strip{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;max-width:900px;margin:0 auto 60px;}
+    .info-chip{display:flex;align-items:center;gap:10px;background:var(--glass);border:1px solid var(--border);border-radius:100px;padding:13px 24px;font-size:15px;font-weight:600;transition:transform .3s,border-color .3s;}
+    .info-chip:hover{transform:translateY(-3px);border-color:var(--primary);}
+    .info-chip i{color:var(--accent);font-size:16px;}
+
+    /* FULL TIMELINE */
+    .full-timeline{max-width:820px;margin:0 auto;position:relative;}
+    .full-timeline::before{content:'';position:absolute;left:29px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--primary),var(--secondary));border-radius:2px;}
+    
+    .phase-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;padding:6px 16px;background:rgba(67,233,123,.1);border-radius:100px;display:inline-block;margin:24px 0 16px 60px;}
+    
+    .tl-row{display:flex;gap:24px;align-items:flex-start;margin-bottom:20px;opacity:0;transform:translateX(-30px);transition:all .6s ease;text-align:left;}
+    .tl-row.reveal{opacity:1;transform:translateX(0);}
+    .tl-dot{width:60px;height:60px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;box-shadow:var(--glow);z-index:1;}
+    .tl-box{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:20px 24px;flex:1;backdrop-filter:blur(10px);transition:border-color .3s;}
+    .tl-box:hover{border-color:rgba(108,99,255,.5);}
+    .tl-time{font-size:12px;color:var(--primary);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+    .tl-box h4{font-size:17px;font-weight:700;margin-bottom:4px;}
+    .tl-box p{font-size:14px;color:var(--muted);line-height:1.6;}
+    .tl-tag{display:inline-block;margin-top:10px;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.5px;}
+    .tl-tag.keynote{background:rgba(108,99,255,.2);color:#a78bfa;}
+    .tl-tag.activity{background:rgba(67,233,123,.15);color:#43e97b;}
+    .tl-tag.food{background:rgba(255,101,132,.15);color:#ff8fa3;}
+    .tl-tag.award{background:rgba(255,200,0,.15);color:#ffd700;}
+
+    /* VENUE */
+    #venue{background:var(--dark2);}
+    .venue-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:900px;margin:0 auto;}
+    @media(max-width:680px){.venue-grid{grid-template-columns:1fr;}}
+    .venue-card{background:var(--glass);border:1px solid var(--border);border-radius:20px;padding:36px 28px;opacity:0;transform:translateY(30px);transition:all .6s ease;}
+    .venue-card.reveal{opacity:1;transform:translateY(0);}
+    .venue-card:hover{border-color:rgba(108,99,255,.4);}
+    .venue-icon{font-size:32px;margin-bottom:16px;}
+    .venue-card h3{font-size:18px;font-weight:700;margin-bottom:10px;}
+    .venue-card p{color:var(--muted);font-size:14px;line-height:1.65;}
+
+    /* CTA + FOOTER */
+    #cta{background:linear-gradient(135deg,rgba(108,99,255,.15),rgba(255,101,132,.1));border-top:1px solid var(--border);text-align:center;}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gradient);color:white;text-decoration:none;padding:15px 32px;border-radius:12px;font-size:16px;font-weight:600;box-shadow:var(--glow);transition:transform .3s,box-shadow .3s;}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 0 50px rgba(108,99,255,.6);}
+    footer{background:var(--dark2);text-align:center;padding:40px 24px;border-top:1px solid var(--border);}
+    .footer-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;}
+    .footer-logo img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--primary);}
+    .footer-logo span{font-weight:700;font-size:17px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .footer-links{display:flex;justify-content:center;gap:24px;list-style:none;margin-bottom:20px;flex-wrap:wrap;}
+    .footer-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .3s;}
+    .footer-links a:hover{color:white;}
+    .footer-copy{font-size:13px;color:var(--muted);}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+    .page-hero>*{animation:fadeUp .8s ease both;}
+    .page-hero .tag{animation-delay:.05s;}.page-hero h1{animation-delay:.15s;}.page-hero p{animation-delay:.25s;}
+  </style>
+</head>
+<body>
+  <div id="scroll-bar"></div>
+
+  <nav>
+    <a class="nav-brand" href="bootcamp1.html">
+      <img src="iedc.jpeg" alt="IEDC Logo" />
+      <span>IEDC Bootcamp</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="bootcamp1.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="schedule.html" class="active">Schedule</a></li>
+      <li><a href="speakers.html">Speakers</a></li>
+      <li><a href="https://forms.gle/AoMxiTVc1iMDThCv5" target="_blank" class="nav-cta">Register →</a></li>
+    </ul>
+    <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="tag"><i class="fas fa-calendar-alt"></i> &nbsp;March 24, 2026</div>
+    <h1>Full Day <span>Schedule</span></h1>
+    <p>Every minute is planned for maximum learning, building, and opportunity. Here's your bootcamp agenda.</p>
+  </div>
+
+  <section id="schedule">
+    <div class="section-label">Agenda</div>
+    <h2 class="section-title">Bootcamp Day Timeline</h2>
+
+    <div class="info-strip">
+      <div class="info-chip"><i class="fas fa-map-marker-alt"></i> College of Engineering Vadakara</div>
+      <div class="info-chip"><i class="fas fa-calendar"></i> March 24, 2026</div>
+      <div class="info-chip"><i class="fas fa-clock"></i> 9:00 AM – 5:00 PM</div>
+    </div>
+
+    <div class="full-timeline">
+
+      <div class="phase-label">🌅 Morning</div>
+
+      <div class="tl-row">
+        <div class="tl-dot">☀️</div>
+        <div class="tl-box">
+          <div class="tl-time">9:00 AM – 9:30 AM</div>
+          <h4>Registration &amp; Welcome Kit</h4>
+          <p>Pick up your participant kit, badge, and get settled. Meet your fellow participants and form team connections early.</p>
+          <span class="tl-tag activity">Check-in</span>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-dot">🎤</div>
+        <div class="tl-box">
+          <div class="tl-time">9:30 AM – 10:00 AM</div>
+          <h4>Inauguration &amp; Opening Ceremony</h4>
+          <p>Welcome address from IEDC coordinators and chief guest. Setting the stage for an inspiring day.</p>
+          <span class="tl-tag keynote">Ceremony</span>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-dot">💬</div>
+        <div class="tl-box">
+          <div class="tl-time">10:00 AM – 11:00 AM</div>
+          <h4>Keynote: The Startup Journey</h4>
+          <p>An inspirational talk by a successful entrepreneur on turning ideas into companies. Q&amp;A session included.</p>
+          <span class="tl-tag keynote">Keynote</span>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-dot">🧩</div>
+        <div class="tl-box">
+          <div class="tl-time">11:00 AM – 11:30 AM</div>
+          <h4>Team Formation &amp; Briefing</h4>
+          <p>Teams are formed, problem statements are handed out, and the build challenge officially begins. Time to strategize!</p>
+          <span class="tl-tag activity">Activity</span>
+        </div>
+      </div>
+
+      <div class="phase-label">🔨 Afternoon Build Sprint</div>
+
+      <div class="tl-row">
+        <div class="tl-dot">🛠️</div>
+        <div class="tl-box">
+          <div class="tl-time">11:30 AM – 1:00 PM</div>
+          <h4>Ideation &amp; Prototyping Sprint – Part 1</h4>
+          <p>Teams brainstorm, validate problem-solution fit, and begin rapid prototyping with mentor guidance available.</p>
+          <span class="tl-tag activity">Build Sprint</span>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-dot">🍽️</div>
+        <div class="tl-box">
+          <div class="tl-time">1:00 PM – 1:45 PM</div>
+          <h4>Lunch Break &amp; Mentorship Tables</h4>
+          <p>Recharge with lunch while continuing informal mentorship conversations at dedicated mentor tables.</p>
+          <span class="tl-tag food">Break</span>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-dot">⚡</div>
+        <div class="tl-box">
+          <div class="tl-time">1:45 PM – 2:30 PM</div>
+          <h4>Prototyping Sprint – Part 2 &amp; Pitch Prep</h4>
+          <p>Final round of building and polishing your pitch. Mentors finalize their feedback rounds across all teams.</p>
+          <span class="tl-tag activity">Build Sprint</span>
+        </div>
+      </div>
+
+      <div class="phase-label">🏆 Pitch &amp; Awards</div>
+
+      <div class="tl-row">
+        <div class="tl-dot">🚀</div>
+        <div class="tl-box">
+          <div class="tl-time">2:30 PM – 4:30 PM</div>
+          <h4>Startup Pitch Competition</h4>
+          <p>Teams present their ideas to a panel of expert judges in a thrilling shark-tank style format. 5 minutes to pitch, 3 minutes for Q&amp;A.</p>
+          <span class="tl-tag keynote">Main Event</span>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-dot">🏆</div>
+        <div class="tl-box">
+          <div class="tl-time">4:30 PM – 5:00 PM</div>
+          <h4>Prize Distribution &amp; Valedictory</h4>
+          <p>Winners announced, prizes and certificates handed out. Closing remarks, group photo, and networking to wrap up.</p>
+          <span class="tl-tag award">Award Ceremony</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VENUE INFO -->
+  <section id="venue">
+    <div class="section-label">Location</div>
+    <h2 class="section-title">Venue Details</h2>
+    <p class="section-desc">Everything you need to know about getting there and what to expect on campus.</p>
+    <div class="venue-grid">
+      <div class="venue-card">
+        <div class="venue-icon">🏫</div>
+        <h3>College of Engineering Vadakara</h3>
+        <p>Vadakara, Kozhikode District, Kerala – 673104. The bootcamp will be held in the main seminar hall and connected lab spaces.</p>
+      </div>
+      <div class="venue-card">
+        <div class="venue-icon">🚌</div>
+        <h3>How to Get There</h3>
+        <p>CEV is well-connected by KSRTC buses from Kozhikode and Kannur. Nearest railway station: Vadakara (5 km). Auto and taxi available from station.</p>
+      </div>
+      <div class="venue-card">
+        <div class="venue-icon">🅿️</div>
+        <h3>Parking</h3>
+        <p>Free parking is available within the campus for two-wheelers and four-wheelers. Follow the IEDC signage from the main gate.</p>
+      </div>
+      <div class="venue-card">
+        <div class="venue-icon">🥗</div>
+        <h3>Food &amp; Refreshments</h3>
+        <p>Lunch and tea breaks are included. The college canteen will also be open throughout the day for additional snacks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta">
+    <div class="section-label">Join the Bootcamp</div>
+    <h2 class="section-title">Save Your Seat — It's Free!</h2>
+    <p class="section-desc">Don't miss a single session. Register now and be part of an unforgettable day.</p>
+    <a href="https://forms.gle/AoMxiTVc1iMDThCv5" target="_blank" class="btn-primary">
+      <i class="fas fa-rocket"></i> Register Now
+    </a>
+  </section>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="iedc.jpeg" alt="IEDC Logo" />
+      <span>IEDC Startup Bootcamp</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="bootcamp1.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="speakers.html">Speakers</a></li>
+      <li><a href="https://forms.gle/AoMxiTVc1iMDThCv5" target="_blank">Register</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 IEDC · College of Engineering Vadakara. Made with ❤️ by the IEDC Team.</p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll',()=>{const winH=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('scroll-bar').style.width=(window.scrollY/winH*100)+'%';});
+    const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('reveal'),i*90);obs.unobserve(e.target);}});},{threshold:0.1});
+    document.querySelectorAll('.tl-row,.venue-card').forEach(el=>obs.observe(el));
+  </script>
+</body>
+</html>

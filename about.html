@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – IEDC Startup Bootcamp 2026</title>
+  <meta name="description" content="Learn more about the IEDC Startup Bootcamp, our mission, team, and FAQ." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #6c63ff;
+      --secondary: #ff6584;
+      --accent: #43e97b;
+      --dark: #0a0a1a;
+      --dark2: #11112a;
+      --glass: rgba(255,255,255,0.07);
+      --border: rgba(255,255,255,0.12);
+      --text: #e8e8ff;
+      --muted: #9090b0;
+      --gradient: linear-gradient(135deg, #6c63ff, #ff6584);
+      --glow: 0 0 30px rgba(108,99,255,0.4);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Inter',sans-serif; background:var(--dark); color:var(--text); overflow-x:hidden; }
+
+    #scroll-bar { position:fixed; top:0; left:0; height:3px; background:var(--gradient); z-index:9999; transition:width .1s; }
+
+    /* NAV */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:18px 60px;
+      background:rgba(10,10,26,.75); backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-brand img { width:42px; height:42px; border-radius:50%; object-fit:cover; border:2px solid var(--primary); box-shadow:0 0 12px rgba(108,99,255,.5); }
+    .nav-brand span { font-family:'Space Grotesk',sans-serif; font-size:20px; font-weight:700; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .nav-links { display:flex; gap:8px; list-style:none; }
+    .nav-links a { color:var(--muted); text-decoration:none; font-size:14px; font-weight:500; padding:8px 16px; border-radius:8px; transition:all .3s; }
+    .nav-links a:hover, .nav-links a.active { color:white; background:var(--glass); }
+    .nav-cta { background:var(--gradient) !important; color:white !important; padding:10px 22px !important; border-radius:10px !important; box-shadow:var(--glow); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--text); border-radius:2px; }
+    @media(max-width:768px){
+      nav{padding:14px 24px;}
+      .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,26,.97);flex-direction:column;padding:20px 24px;gap:4px;border-bottom:1px solid var(--border);}
+      .nav-links.open{display:flex;}
+      .hamburger{display:flex;}
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding:160px 24px 80px;
+      text-align:center;
+      background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(108,99,255,.2) 0%, transparent 70%);
+    }
+    .page-hero .tag {
+      display:inline-block; background:rgba(108,99,255,.15); border:1px solid rgba(108,99,255,.4);
+      padding:7px 18px; border-radius:100px; font-size:12px; color:#a78bfa; font-weight:600; letter-spacing:.5px; margin-bottom:20px;
+    }
+    .page-hero h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(36px,5vw,62px); font-weight:800; letter-spacing:-1.5px; margin-bottom:16px; }
+    .page-hero h1 span { background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .page-hero p { color:var(--muted); font-size:18px; max-width:520px; margin:0 auto; line-height:1.7; }
+
+    /* SECTIONS */
+    section { padding:80px 24px; position:relative; z-index:1; }
+    .section-label { font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--primary); font-weight:600; margin-bottom:10px; text-align:center; }
+    .section-title { font-family:'Space Grotesk',sans-serif; font-size:clamp(26px,3.5vw,40px); font-weight:700; margin-bottom:14px; text-align:center; }
+    .section-desc { color:var(--muted); font-size:16px; max-width:580px; margin:0 auto 50px; line-height:1.7; text-align:center; }
+
+    /* MISSION GRID */
+    .mission-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:24px; max-width:1050px; margin:0 auto; }
+    .m-card {
+      background:var(--glass); border:1px solid var(--border); border-radius:20px; padding:36px 28px;
+      transition:transform .35s,box-shadow .35s,border-color .35s; opacity:0; transform:translateY(40px); transition:all .6s ease;
+    }
+    .m-card.reveal { opacity:1; transform:translateY(0); }
+    .m-card:hover { transform:translateY(-8px); box-shadow:0 20px 50px rgba(108,99,255,.2); border-color:rgba(108,99,255,.4); }
+    .m-icon { width:52px; height:52px; border-radius:14px; background:var(--gradient); display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:20px; box-shadow:var(--glow); }
+    .m-card h3 { font-size:18px; font-weight:700; margin-bottom:10px; }
+    .m-card p { color:var(--muted); font-size:14px; line-height:1.65; }
+
+    /* IEDC INFO */
+    #iedc { background:var(--dark2); }
+    .iedc-inner { max-width:900px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+    @media(max-width:700px){ .iedc-inner{grid-template-columns:1fr;} }
+    .iedc-text h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(24px,3vw,36px); font-weight:700; margin-bottom:14px; }
+    .iedc-text p { color:var(--muted); font-size:15px; line-height:1.75; margin-bottom:14px; }
+    .iedc-text .highlight-chip {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(108,99,255,.15); border:1px solid rgba(108,99,255,.35);
+      border-radius:100px; padding:6px 16px; font-size:13px; color:#a78bfa; font-weight:600; margin:4px 4px 4px 0;
+    }
+    .iedc-visual {
+      background:var(--glass); border:1px solid var(--border); border-radius:24px; padding:36px;
+      text-align:center;
+    }
+    .iedc-visual img { width:100px; border-radius:50%; border:3px solid var(--primary); box-shadow:var(--glow); margin-bottom:16px; }
+    .iedc-visual h3 { font-size:20px; font-weight:700; margin-bottom:6px; }
+    .iedc-visual p { color:var(--muted); font-size:14px; }
+
+    /* FAQ */
+    #faq { background:var(--dark); }
+    .faq-list { max-width:750px; margin:0 auto; display:flex; flex-direction:column; gap:16px; }
+    .faq-item {
+      background:var(--glass); border:1px solid var(--border); border-radius:16px; overflow:hidden;
+      opacity:0; transform:translateY(20px); transition:all .5s ease;
+    }
+    .faq-item.reveal { opacity:1; transform:translateY(0); }
+    .faq-q {
+      padding:20px 24px; font-size:16px; font-weight:600; cursor:pointer;
+      display:flex; justify-content:space-between; align-items:center; user-select:none;
+    }
+    .faq-q i { color:var(--primary); transition:transform .3s; }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; color:var(--muted); font-size:15px; line-height:1.7; padding:0 24px; }
+    .faq-item.open .faq-a { max-height:200px; padding:0 24px 20px; }
+    .faq-item.open .faq-q i { transform:rotate(180deg); }
+
+    /* CTA */
+    #cta {
+      background:linear-gradient(135deg,rgba(108,99,255,.15),rgba(255,101,132,.1));
+      border-top:1px solid var(--border); text-align:center;
+    }
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--gradient); color:white; text-decoration:none; padding:15px 32px;
+      border-radius:12px; font-size:16px; font-weight:600; box-shadow:var(--glow);
+      transition:transform .3s,box-shadow .3s;
+    }
+    .btn-primary:hover { transform:translateY(-3px); box-shadow:0 0 50px rgba(108,99,255,.6); }
+
+    /* FOOTER */
+    footer { background:var(--dark2); text-align:center; padding:40px 24px; border-top:1px solid var(--border); }
+    .footer-logo { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:20px; }
+    .footer-logo img { width:36px; height:36px; border-radius:50%; object-fit:cover; border:2px solid var(--primary); }
+    .footer-logo span { font-weight:700; font-size:17px; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .footer-links { display:flex; justify-content:center; gap:24px; list-style:none; margin-bottom:20px; flex-wrap:wrap; }
+    .footer-links a { color:var(--muted); text-decoration:none; font-size:14px; transition:color .3s; }
+    .footer-links a:hover { color:white; }
+    .footer-copy { font-size:13px; color:var(--muted); }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);} }
+    .page-hero > * { animation:fadeUp .8s ease both; }
+    .page-hero .tag{animation-delay:.05s;} .page-hero h1{animation-delay:.15s;} .page-hero p{animation-delay:.25s;}
+  </style>
+</head>
+<body>
+  <div id="scroll-bar"></div>
+
+  <nav>
+    <a class="nav-brand" href="bootcamp1.html">
+      <img src="iedc.jpeg" alt="IEDC Logo" />
+      <span>IEDC Bootcamp</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="bootcamp1.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="speakers.html">Speakers</a></li>
+      <li><a href="https://forms.gle/AoMxiTVc1iMDThCv5" target="_blank" class="nav-cta">Register →</a></li>
+    </ul>
+    <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="tag"><i class="fas fa-info-circle"></i> &nbsp;About the Event</div>
+    <h1>Fueling Student <span>Entrepreneurship</span></h1>
+    <p>Everything you need to know about IEDC Startup Bootcamp 2026 — our mission, values, and what makes it special.</p>
+  </div>
+
+  <!-- MISSION -->
+  <section id="mission">
+    <div class="section-label">Why We Exist</div>
+    <h2 class="section-title">Our Mission</h2>
+    <p class="section-desc">We believe every student has the potential to build something world-changing. The bootcamp is how we unleash it.</p>
+    <div class="mission-grid">
+      <div class="m-card">
+        <div class="m-icon">🔥</div>
+        <h3>Ignite Innovation</h3>
+        <p>Push students to think beyond textbooks and create solutions to real-world problems through design thinking and rapid prototyping.</p>
+      </div>
+      <div class="m-card">
+        <div class="m-icon">🧠</div>
+        <h3>Build Entrepreneurial Mindset</h3>
+        <p>Foster risk-taking, creative confidence, and the resilience that every successful entrepreneur needs.</p>
+      </div>
+      <div class="m-card">
+        <div class="m-icon">🌱</div>
+        <h3>Grow the Ecosystem</h3>
+        <p>Create a community of student founders who support and inspire each other well beyond the bootcamp day.</p>
+      </div>
+      <div class="m-card">
+        <div class="m-icon">🚀</div>
+        <h3>Launch Real Ventures</h3>
+        <p>Give students the tools, mentorship, and confidence to start companies — even before they graduate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT IEDC -->
+  <section id="iedc">
+    <div class="iedc-inner">
+      <div class="iedc-text">
+        <div class="section-label" style="text-align:left;">About IEDC</div>
+        <h2>Innovation &amp; Entrepreneurship Development Cell</h2>
+        <p>The IEDC (Innovation &amp; Entrepreneurship Development Cell) at College of Engineering Vadakara is a government-backed initiative by Kerala Startup Mission (KSUM) to foster an entrepreneurial culture among engineering students.</p>
+        <p>We host workshops, hackathons, mentoring sessions, and startup boot camps throughout the academic year, helping students at every stage of their entrepreneurial journey.</p>
+        <div>
+          <span class="highlight-chip"><i class="fas fa-check-circle"></i> KSUM Recognized</span>
+          <span class="highlight-chip"><i class="fas fa-university"></i> CEV</span>
+          <span class="highlight-chip"><i class="fas fa-users"></i> 200+ Members</span>
+        </div>
+      </div>
+      <div class="iedc-visual">
+        <img src="iedc.jpeg" alt="IEDC Logo" />
+        <h3>IEDC – CEV</h3>
+        <p>College of Engineering Vadakara</p>
+        <p style="margin-top:10px;font-size:13px;color:var(--muted);">Empowering the next generation of Kerala's innovators</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-label">Got Questions?</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-desc">Here are answers to the most common questions about the bootcamp.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Who can participate? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Any engineering student — whether from CEV or other colleges across Kerala — is welcome to register and participate. No prior startup experience needed!</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is registration free? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Yes! The IEDC Startup Bootcamp is completely free to attend. Just register through the Google Form and secure your spot.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need a team to register? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">No. You can register as an individual and teams will be formed on the day of the event. You're also welcome to come with a pre-formed team of 2–4 members.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What should I bring? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Your laptop, your ideas, and your enthusiasm! We'll handle the rest — venue, internet, stationery, and refreshments.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Will certificates be given? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Yes! All participants will receive participation certificates. Winners and runners-up will receive special recognition certificates from IEDC.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need a startup idea before coming? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Not necessarily. The bootcamp includes an ideation session where you'll brainstorm with your team. If you already have an idea, even better — bring it!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="section-label">Join Us</div>
+    <h2 class="section-title">Ready to Begin?</h2>
+    <p class="section-desc">Seats are limited. Lock in your spot today and be part of something extraordinary.</p>
+    <a href="https://forms.gle/AoMxiTVc1iMDThCv5" target="_blank" class="btn-primary">
+      <i class="fas fa-rocket"></i> Register for Free
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="iedc.jpeg" alt="IEDC Logo" />
+      <span>IEDC Startup Bootcamp</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="bootcamp1.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="speakers.html">Speakers</a></li>
+      <li><a href="https://forms.gle/AoMxiTVc1iMDThCv5" target="_blank">Register</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 IEDC · College of Engineering Vadakara. Made with ❤️ by the IEDC Team.</p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const winH = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('scroll-bar').style.width = (window.scrollY / winH * 100) + '%';
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('reveal'), i * 90); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.m-card, .faq-item').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        document.querySelectorAll('.faq-item.open').forEach(o => { if (o !== item) o.classList.remove('open'); });
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
